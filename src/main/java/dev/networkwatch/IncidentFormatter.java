@@ -1,0 +1,2 @@
+package dev.networkwatch;import java.util.*;
+public final class IncidentFormatter {public String text(Analyzer.Incident i){var out=new StringBuilder("Incident summary for ").append(i.subject()).append("\nRisk: ").append(i.risk()).append("/100\n");for(var f:i.findings())out.append("- ").append(f.rule()).append(": ").append(f.explanation()).append(" (").append(f.points()).append(" points)\n");if(i.findings().isEmpty())out.append("- No configured rules triggered.\n");return out.toString();}}
