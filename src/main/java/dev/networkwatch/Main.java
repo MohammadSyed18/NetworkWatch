@@ -1,2 +1,13 @@
-package dev.networkwatch;import java.nio.file.*;
-public class Main{public static void main(String[]a)throws Exception{if(a.length!=1)throw new IllegalArgumentException("usage: networkwatch <synthetic.csv>");var x=new Analyzer();var i=x.analyze(x.parse(Files.readAllLines(Path.of(a[0]))));System.out.printf("%s risk=%d%n",i.subject(),i.risk());i.findings().forEach(f->System.out.println(f.rule()+": "+f.explanation()+" +"+f.points()));}}
+package dev.networkwatch;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        if (args.length < 1 || args.length > 2) throw new IllegalArgumentException("usage: networkwatch <logs.csv> [baseline-split-epoch]");
+        var events = new EventCsv().parse(Files.readAllLines(Path.of(args[0])));
+        long split = args.length == 2 ? Long.parseLong(args[1]) : 0;
+        System.out.print(new BatchReportFormatter().markdown(new EventPipeline().analyze(events,split)));
+    }
+}
