@@ -1,0 +1,2 @@
+package dev.networkwatch;import java.nio.file.*;
+public class Main{public static void main(String[]a)throws Exception{if(a.length!=1)throw new IllegalArgumentException("usage: networkwatch <synthetic.csv>");var x=new Analyzer();var i=x.analyze(x.parse(Files.readAllLines(Path.of(a[0]))));System.out.printf("%s risk=%d%n",i.subject(),i.risk());i.findings().forEach(f->System.out.println(f.rule()+": "+f.explanation()+" +"+f.points()));}}

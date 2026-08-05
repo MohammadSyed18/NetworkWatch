@@ -1,0 +1,8 @@
+epoch,user,source,kind,success,bytes,region
+1000,demo-user,192.0.2.10,auth,false,0,lab-a
+1010,demo-user,192.0.2.10,auth,false,0,lab-a
+1020,demo-user,192.0.2.10,auth,false,0,lab-a
+1030,demo-user,192.0.2.10,auth,false,0,lab-a
+1040,demo-user,192.0.2.10,auth,false,0,lab-a
+1050,demo-user,192.0.2.20,traffic,true,12000000,lab-b
+1060,demo-user,192.0.2.30,auth,true,0,lab-c
